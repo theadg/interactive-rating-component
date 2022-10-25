@@ -2,14 +2,186 @@ $color-primary: hsl(25, 97%, 53%);
 
 $color-header: hsl(0, 0, 100%);
 $color-text: hsl(217, 12%, 63%);
-$color-text: hsl(216, 12%, 54%);
+$color-text-secondary: hsl(216, 12%, 54%);
+
 // linear gradient
 $color-bg: hsl(213, 19%, 18%);
-$color-bg-secondary: hsl(216, 12%, 8%);
-
+$color-bg-secondary: hsl(228, 11%, 9%);
 $font-size: 15px;
 
-$padding-mobile: 24px;
+$padding: 24px;
 
 $width-card: 325px;
 $height-card: 360px;
+$border-radius-card: 10px;
+// DESKTOP:
+// width: 410px
+// height: 415px
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin flexCenter() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin buttonSize() {
+  height: 36px;
+  width: 36px;
+}
+main {
+  height: 100vh;
+  width: 100vw;
+  background-color: $color-bg-secondary;
+  @include flexCenter();
+  font-family: "Overpass", sans-serif;
+}
+
+.card {
+  width: $width-card;
+  height: $height-card;
+  //   background-color: $color-bg;
+  background: radial-gradient(at top, hsl(213, 19%, 18%), hsl(215, 27%, 12%));
+  padding: $padding;
+  border-radius: $border-radius-card;
+
+  //   TODO: fix color
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  &__icon {
+    background-color: hsl(210, 19%, 18%);
+    @include flexCenter();
+    @include buttonSize();
+    border-radius: 50%;
+
+    &--star {
+      height: 12px;
+      width: 12px;
+    }
+  }
+  &__title {
+    color: $color-header;
+  }
+
+  &__text {
+    color: $color-text;
+    font-size: 14px;
+    line-height: 1.25rem;
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  button {
+    appearance: none;
+    border: none;
+    outline: none;
+    font-family: "Overpass", sans-serif;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__buttons {
+    @include flexCenter();
+    justify-content: space-between;
+    width: 100%;
+
+    &--digit {
+      @include flexCenter();
+      @include buttonSize();
+
+      background-color: $color-bg;
+      border-radius: 50%;
+      color: $color-text-secondary;
+
+      &:hover {
+        background-color: $color-text-secondary;
+        color: white;
+      }
+    }
+  }
+  &__submit {
+    height: 44px;
+    border-radius: 2rem;
+    @extend .selected;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    &:hover {
+      background-color: $color-header;
+      color: $color-primary;
+    }
+  }
+
+  &__submitted {
+    height: 100%;
+    @include flexCenter();
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  &__rating {
+    background: $color-bg;
+    font-size: 13px;
+    color: $color-primary;
+    padding: 0rem 0.5rem;
+    border-radius: 2rem;
+    height: 32px;
+    @include flexCenter();
+    // line-height: 1rem;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.selected {
+  background-color: $color-primary;
+  color: $color-header;
+}
+
+@media screen and (min-width: 375px) {
+  $width-card: 410px;
+  $height-card: 415px;
+  $padding: 34px;
+
+  @mixin buttonSize {
+    height: 44px;
+    width: 44px;
+  }
+  .card {
+    width: $width-card;
+    height: $height-card;
+    padding: $padding;
+    gap: 2rem;
+    justify-content: none;
+
+    &__icon {
+      @include buttonSize();
+    }
+    &__info {
+      display: grid;
+      gap: 0.5rem;
+    }
+    &__text {
+      font-size: $font-size;
+    }
+    &__buttons {
+      &--digit {
+        @include buttonSize();
+      }
+    }
+  }
+}
