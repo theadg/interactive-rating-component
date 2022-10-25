@@ -13,32 +13,58 @@
     />
 
     <title>Frontend Mentor | Interactive rating component</title>
-
+    <!-- css -->
     <link rel="stylesheet" href="./styles/style.css" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- JS -->
+    <script src="./script.js" defer></script>
   </head>
   <body>
-    <main></main>
-    <!-- Rating state start -->
+    <main>
+      <!-- Rating state start -->
+      <article class="card">
+        <!-- TODO add star icon -->
+        <div class="card__body">
+          <i class="card__icon">
+            <img
+              class="card__icon--star"
+              src="images/icon-star.svg"
+              alt="star icon"
+            />
+          </i>
+          <h2 class="card__title">How did we do?</h2>
+          <p class="card__text">
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
 
-    How did we do? Please let us know how we did with your support request. All
-    feedback is appreciated to help us improve our offering! 1 2 3 4 5 Submit
+          <div class="card__buttons">
+            <button class="card__buttons--digit">1</button>
+            <button class="card__buttons--digit">2</button>
+            <button class="card__buttons--digit">3</button>
+            <button class="card__buttons--digit">4</button>
+            <button class="card__buttons--digit">5</button>
+          </div>
 
-    <!-- Rating state end -->
+          <button type="button" class="card__submit">SUBMIT</button>
+        </div>
 
-    <!-- Thank you state start -->
-
-    You selected
-    <!-- Add rating here -->
-    out of 5 Thank you! We appreciate you taking the time to give a rating. If
-    you ever need more support, don’t hesitate to get in touch!
-
-    <!-- Thank you state end -->
-
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div>
+        <div class="card__submitted hidden">
+          <img src="./images/illustration-thank-you.svg" alt="Thank You" />
+          <div class="card__rating"></div>
+          <h2 class="card__title">Thank you!</h2>
+          <p class="card__text card__text--center">
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don't hesitate to get in touch!
+          </p>
+        </div>
+      </article>
+    </main>
   </body>
 </html>
